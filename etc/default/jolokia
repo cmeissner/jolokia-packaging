@@ -1,0 +1,6 @@
+JOLOKIA_PATH="/usr/lib/jolokia"
+JOLOKIA_OPTS="$JOLOKIA_OPTS --config /etc/jolokia/jvm-agent.properties"
+# PROCESS_REGEXP can be either a numeric process id or a regular expression. A regular expression is matched
+# against the processes' names (ignoring case) and must be specific enough to select exactly one process.
+PROCESS_REGEXP=""
+UID=""

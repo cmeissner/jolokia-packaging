@@ -1,0 +1,26 @@
+#!/bin/sh
+NAME="jolokia"
+VERSION="1.1.0"
+ITERATION="1~ocado1"
+ARCH="all"
+cd ..
+rm ${NAME}_${VERSION}-${ITERATION}_${ARCH}.deb
+fpm -s dir -t deb \
+	-n ${NAME} \
+	-v ${VERSION} \
+	--iteration ${ITERATION} \
+	--provides ${NAME} \
+	--license "Apache License 2.0" \
+	--url http://www.jolokia.org/ \
+	--vendor https://github.com/rhuss \
+	--description "Jolokia is an HTTP/JSON bridge for remote JMX access.\n It is an alternative to standard JSR 160 connectors,\n using an agent based approach. The client communicates\n with the agent over HTTP (GET or POST) with the request\n and response payload represented in JSON. It transparently\n bridges to the JMX world, talking to clients on the frontend\n via a REST-like protocol and to a JMX MBeanServer on the backend." \
+	--config-files /etc/default/jolokia \
+	--config-files /etc/jolokia/jvm-agent.properties \
+	--directories /etc/jolokia \
+	--directories /usr/lib/jolokia \
+	-m "Stuart Warren (DSI) <stuart.warren@ocado.com>" \
+	-d java-runtime \
+	-a ${ARCH} \
+	-C ./${NAME}-packaging \
+	etc usr
+
