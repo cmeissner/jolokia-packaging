@@ -1,8 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 NAME="jolokia"
-VERSION="1.1.0"
+VERSION="1.1.3"
 ITERATION="1~custom1"
 ARCH="all"
+rm usr/lib/jolokia/jolokia-jvm-*.jar
+pushd usr/lib/jolokia/
+wget http://labs.consol.de/maven/repository/org/jolokia/jolokia-jvm/${VERSION}/jolokia-jvm-${VERSION}-agent.jar
+popd
 cd ..
 rm ${NAME}_${VERSION}-${ITERATION}_${ARCH}.deb
 fpm -s dir -t deb \
