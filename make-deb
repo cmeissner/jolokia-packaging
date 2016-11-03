@@ -1,18 +1,22 @@
 #!/bin/bash
 NAME="jolokia"
-VERSION="1.1.3"
-ITERATION="1~custom1"
+JOLOKIA_VERSION="1.3.5"
+HAWTIO_VERSION="1.4.66"
+JOLOKIA_URL="https://repo1.maven.org/maven2/org/jolokia/jolokia-jvm"
+HAWTIO_URL="https://oss.sonatype.org/content/repositories/public/io/hawt/hawtio-app"
+ITERATION="1~bnotk1"
 ARCH="all"
 mkdir -p usr/lib/jolokia/
-rm usr/lib/jolokia/jolokia-jvm-*.jar
+rm usr/lib/jolokia/*.jar*
 pushd usr/lib/jolokia/
-wget http://labs.consol.de/maven/repository/org/jolokia/jolokia-jvm/${VERSION}/jolokia-jvm-${VERSION}-agent.jar
+wget -c ${JOLOKIA_URL}/${JOLOKIA_VERSION}/jolokia-jvm-${JOLOKIA_VERSION}-agent.jar
+wget -c ${HAWTIO_URL}/${HAWTIO_VERSION}/hawtio-app-${HAWTIO_VERSION}.jar
 popd
 cd ..
-rm ${NAME}_${VERSION}-${ITERATION}_${ARCH}.deb
+rm ${NAME}_${JOLOKIA_VERSION}-${ITERATION}_${ARCH}.deb
 fpm -s dir -t deb \
 	-n ${NAME} \
-	-v ${VERSION} \
+	-v ${JOLOKIA_VERSION} \
 	--iteration ${ITERATION} \
 	--provides ${NAME} \
 	--license "Apache License 2.0" \
