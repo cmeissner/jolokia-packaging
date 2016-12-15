@@ -29,7 +29,6 @@ fpm -s dir -t deb \
 	--directories /etc/jolokia \
 	--directories /usr/lib/jolokia \
 	-m "Stuart Warren <stuart.warren@ocado.com>" \
-	-d java-runtime \
 	-a ${ARCH} \
 	-C ./${NAME}-packaging \
 	etc usr
