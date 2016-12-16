@@ -28,6 +28,7 @@ fpm -s dir -t deb \
 	--config-files /etc/jolokia/jvm-agent.properties \
 	--directories /etc/jolokia \
 	--directories /usr/lib/jolokia \
+	-d default-jre \
 	-m "Stuart Warren <stuart.warren@ocado.com>" \
 	-a ${ARCH} \
 	-C ./${NAME}-packaging \
